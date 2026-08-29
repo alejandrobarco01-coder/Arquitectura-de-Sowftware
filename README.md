@@ -4,6 +4,15 @@
 
 - El objetivo del taller es practicar la creación y organización de módulos y componentes en una aplicación Angular.
 
+## 🌐 APIs Consultadas
+
+Para la **Sección 2 - Consumo de APIs**, se integró la siguiente API pública de libre acceso:
+
+- **API de Países (RestCountries)**: `https://restcountries.com/v3.1/all`
+  - **Módulo**: `CountriesModule` (`src/app/modules/countries`)
+  - **Descripción**: Permite obtener un listado completo de países del mundo con datos detallados como nombre oficial/común, capital, región, población y banderas en formato SVG/PNG.
+  - **Servicio**: `CountriesService` (`src/app/modules/countries/services/countries.service.ts`)
+
 ## 📋 Requisitos Previos
 
 Antes de iniciar, asegúrate de tener instaladas las siguientes herramientas:
