@@ -1,41 +1,19 @@
-/**
- * Estructura del nombre de un país.
- */
-export interface CountryName {
-    /** Nombre común del país */
-    common: string;
-    /** Nombre oficial del país */
-    official: string;
-}
-
-/**
- * URLs de las imágenes de las banderas de un país.
- */
+/** Datos de la bandera que devuelve RestCountries v3.1. */
 export interface CountryFlags {
-    /** URL de la bandera en formato PNG */
-    png: string;
-    /** URL de la bandera en formato SVG */
-    svg: string;
-    /** Texto alternativo descriptivo de la bandera */
-    alt?: string;
+  png: string;
+  svg: string;
+  alt?: string;
 }
 
-/**
- * Representa la información de un país obtenida de la API RestCountries.
- */
+/** Información de país utilizada por el módulo de países. */
 export interface Country {
-    /** Nombres del país */
-    name: CountryName;
-    /** Arreglo con la lista de capitales del país */
-    capital?: string[];
-    /** Región o continente del país */
-    region: string;
-    /** Subregión geográfica del país */
-    subregion?: string;
-    /** Cantidad total de habitantes */
-    population: number;
-    /** Objetos con las imágenes de la bandera */
-    flags: CountryFlags;
-    /** Código ISO de dos letras del país */
-    cca2: string;
+  name: {
+    common: string;
+    official: string;
+  };
+  capital?: string[];
+  region: string;
+  population: number;
+  flags: CountryFlags;
+  cca2: string;
 }

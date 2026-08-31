@@ -43,7 +43,7 @@ describe('TableCountriesComponent', () => {
     const rows = compiled.querySelectorAll('tbody tr');
     expect(rows.length).toBe(1);
     expect(rows[0].textContent).toContain('Colombia');
-    expect(rows[0].textContent).toContain('Bogotá');
+    expect(rows[0].textContent).toContain('CO');
   });
 
   it('should render empty state message if no countries', () => {
@@ -51,7 +51,7 @@ describe('TableCountriesComponent', () => {
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement as HTMLElement;
-    const emptyRow = compiled.querySelector('tbody tr td[colspan="5"]');
+    const emptyRow = compiled.querySelector('tbody tr td[colspan="4"]');
     expect(emptyRow).toBeTruthy();
     expect(emptyRow?.textContent).toContain('No hay países disponibles');
   });

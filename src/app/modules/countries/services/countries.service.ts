@@ -1,34 +1,45 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Country } from '../interfaces/country.interface';
 
+interface FirstCountriesResponse {
+  data: Record<string, { country: string; region: string }>;
+}
+
 /**
- * Servicio para consultar datos de países desde la API RestCountries.
+ * Servicio para consultar países desde la API pública de FIRST.
  *
- * Encapsula la lógica de negocio para obtener la lista de países,
- * utilizando HttpClient para peticiones asíncronas.
+ * La API no requiere clave ni configuración CORS, por lo que puede consumirse
+ * directamente desde el cliente Angular mediante HttpClient.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CountriesService {
-  /**
-   * URL base de la API de RestCountries.
-   */
-  private readonly apiUrl = 'https://restcountries.com/v3.1/all';
+  private readonly apiUrl = 'https://api.first.org/data/v1/countries?limit=100';
 
-  /**
-   * Inyecta HttpClient para realizar peticiones HTTP.
-   * @param http Cliente HTTP de Angular.
-   */
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) {}
 
-  /**
-   * Obtiene todos los países disponibles.
-   * @returns Un Observable que emite un arreglo de países.
-   */
+  /** Obtiene y adapta los países a la estructura usada por la tabla. */
   getAllCountries(): Observable<Country[]> {
-    return this.http.get<Country[]>(this.apiUrl);
+    return this.http.get<FirstCountriesResponse>(this.apiUrl).pipe(
+      map((response) =>
+        Object.entries(response.data).map(([code, country]) => ({
+          name: {
+            common: country.country,
+            official: country.country,
+          },
+          capital: [],
+          region: country.region,
+          population: 0,
+          flags: {
+            png: `https://flagcdn.com/w80/${code.toLowerCase()}.png`,
+            svg: `https://flagcdn.com/${code.toLowerCase()}.svg`,
+          },
+          cca2: code,
+        }))
+      )
+    );
   }
 }

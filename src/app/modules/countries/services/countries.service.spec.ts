@@ -28,25 +28,25 @@ describe('CountriesService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should fetch all countries (getAllCountries)', () => {
-    const mockCountries: Country[] = [
-      {
-        name: { common: 'Colombia', official: 'Republic of Colombia' },
-        capital: ['Bogotá'],
-        region: 'Americas',
-        population: 50882884,
-        flags: { png: 'img.png', svg: 'img.svg' },
-        cca2: 'CO'
-      }
-    ];
+  it('should fetch and adapt countries (getAllCountries)', () => {
+    const apiResponse = {
+      data: {
+        CO: { country: 'Colombia', region: 'Americas' },
+      },
+    };
 
     service.getAllCountries().subscribe((countries) => {
       expect(countries.length).toBe(1);
-      expect(countries).toEqual(mockCountries);
+      expect(countries[0]).toMatchObject({
+        name: { common: 'Colombia' },
+        region: 'Americas',
+        cca2: 'CO',
+      });
+      expect(countries[0].flags.png).toBe('https://flagcdn.com/w80/co.png');
     });
 
-    const req = httpMock.expectOne('https://restcountries.com/v3.1/all');
+    const req = httpMock.expectOne('https://api.first.org/data/v1/countries?limit=100');
     expect(req.request.method).toBe('GET');
-    req.flush(mockCountries);
+    req.flush(apiResponse);
   });
 });
