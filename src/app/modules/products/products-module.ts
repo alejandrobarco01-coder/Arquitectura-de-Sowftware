@@ -6,6 +6,18 @@ import { ListProductsComponent } from './pages/list-products/list-products.compo
 import { ProductsRoutingModule } from './products-routing-module';
 import { ProductsComponent } from './products.component';
 
+/**
+ * Módulo funcional para la gestión de productos.
+ *
+ * Encapsula componentes y rutas para mostrar el catálogo
+ * de productos. Se carga de forma lazy.
+ *
+ * @remarks
+ * Contiene:
+ * - `ProductsComponent`: contenedor con `<router-outlet>`
+ * - `ListProductsComponent`: página principal
+ * - `TableProductsComponent`: componente de presentación
+ */
 @NgModule({
   declarations: [
     ListProductsComponent,
