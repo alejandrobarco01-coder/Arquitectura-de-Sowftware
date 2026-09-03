@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { USERS } from '../../../core/config/users.config';
-import { User } from '../interfaces/users.interface';
+import { Cars } from '../../../core/config/cars.config';
+import { Car } from '../interfaces/car.interface';
 
 /**
  * Servicio para gestionar usuarios.
  *
  * Se encarga de proporcionar métodos para obtener los usuarios de la aplicación.
- * Actualmente devuelve un listado de usuarios de ejemplo definidos en `USERS`.
+ * Actualmente devuelve un listado de usuarios de ejemplo definidos en `Cars`.
  *
  * @remarks
  * Este servicio está registrado a nivel raíz (`providedIn: 'root'`) y puede ser
@@ -16,11 +16,11 @@ import { User } from '../interfaces/users.interface';
  * @example
  * ```ts
  * // Inyectando el servicio en un componente
- * constructor(private usersService: UsersService) {}
+ * constructor(private CarsService: CarsService) {}
  *
  * ngOnInit() {
- *   this.usersService.getAllUsers().subscribe(users => {
- *     console.log(users);
+ *   this.CarsService.getAllCars().subscribe(Cars => {
+ *     console.log(Cars);
  *   });
  * }
  * ```
@@ -28,13 +28,13 @@ import { User } from '../interfaces/users.interface';
 @Injectable({
   providedIn: 'root',
 })
-export class UsersService {
+export class CarsService {
   /**
    * Obtiene todos los usuarios disponibles.
    *
-   * @returns Observable con el listado de usuarios (`User[]`).
+   * @returns Observable con el listado de usuarios (`Car[]`).
    */
-  getAllUsers(): Observable<User[]> {
-    return of(USERS);
+  getAllCars(): Observable<Car[]> {
+    return of(Cars);
   }
 }

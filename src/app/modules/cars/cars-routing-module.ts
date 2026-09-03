@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListUsersComponent } from './pages/list-users/list-users.component';
+import { ListCarsComponent } from './pages/list-cars/list-cars.component';
 
 /**
  * Configuración de rutas del módulo de usuarios.
@@ -10,12 +10,12 @@ import { ListUsersComponent } from './pages/list-users/list-users.component';
  */
 const routes: Routes = [
   {
-    path: 'list-users',
-    component: ListUsersComponent
+    path: 'list-cars',
+    component: ListCarsComponent
   },
   {
     path: '**',
-    redirectTo: 'list-users'
+    redirectTo: 'list-cars'
   }
 ];
 
@@ -26,4 +26,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class UsersRoutingModule { }
+export class CarsRoutingModule { }

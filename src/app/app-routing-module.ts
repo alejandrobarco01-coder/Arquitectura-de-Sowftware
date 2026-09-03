@@ -13,8 +13,8 @@ import { RouterModule, Routes } from '@angular/router';
  */
 const routes: Routes = [
   {
-    path: 'users',
-    loadChildren: () => import('./modules/users/users-module').then(m => m.UsersModule)
+    path: 'cars',
+    loadChildren: () => import('./modules/cars/cars-module').then(m => m.CarsModule)
   },
   {
     path: 'products',
@@ -26,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'users'
+    redirectTo: 'cars'
   },
 ];
 

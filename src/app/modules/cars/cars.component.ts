@@ -11,12 +11,12 @@ import { Component } from '@angular/core';
  *
  * @example
  * ```html
- * <app-users></app-users>
+ * <app-Cars></app-Cars>
  * ```
  */
 @Component({
-  selector: 'app-users',
+  selector: 'app-Cars',
   template: `<router-outlet></router-outlet>`,
   standalone: false,
 })
-export class UsersComponent { }
+export class CarsComponent { }
