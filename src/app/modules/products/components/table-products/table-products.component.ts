@@ -5,9 +5,8 @@ import { Product, ProductCategory } from '../../interfaces/products.interface';
 /**
  * Componente de tabla de productos.
  *
- * Se utiliza para mostrar un listado de productos en una tabla,
- * mostrando información como nombre, categoría, precio y un badge
- * visual que indica la categoría de cada producto.
+ * Se utiliza para mostrar productos tecnológicos, sus referencias,
+ * categorías, disponibilidad y precio en una tabla.
  *
  * @remarks
  * Este componente recibe los productos desde un componente padre
@@ -40,19 +39,15 @@ export class TableProductsComponent {
    * Mapeo de categorías de productos a tipos de Badge.
    * @type {Record<ProductCategory, BadgeType>}
    * @remarks
-   * Se utiliza para asignar colores de badges a cada categoría:
-   * - 'Carnes' → 'danger' (rojo)
-   * - 'Frutas' → 'warning' (amarillo)
-   * - 'Lacteos' → 'primary' (azul)
-   * - 'Verduras' → 'success' (verde)
+   * Se utiliza para asignar colores de badges a cada categoría del catálogo.
    *
    * Esto permite que en la tabla cada producto tenga un badge visual que indique su categoría
    * de forma clara para el usuario.
    */
-  categoryMap: Record<ProductCategory, BadgeType> = {
-    'Carnes' : 'danger',
-    'Frutas': 'warning',
-    'Lacteos': 'primary',
-    'Verduras': 'success',
-  }
+  readonly categoryMap: Record<ProductCategory, BadgeType> = {
+    'Computadores': 'primary',
+    'Periféricos': 'success',
+    'Audio': 'warning',
+    'Hogar inteligente': 'danger',
+  };
 }

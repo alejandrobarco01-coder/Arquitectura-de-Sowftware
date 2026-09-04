@@ -1,12 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/products.interface';
 import { ProductsService } from '../../services/products.service';
 
 /**
- * Componente contenedor de productos.
+ * Página principal del catálogo tecnológico.
  *
- * Se utiliza para gestionar y mostrar un listado de productos
- * utilizando el componente `TableProductsComponent`.
+ * Muestra el inventario disponible mediante el componente de tabla.
  *
  * @remarks
  * Este componente se encarga de consumir el servicio `ProductsService`
@@ -15,15 +14,21 @@ import { ProductsService } from '../../services/products.service';
  *
  * @example
  * ```html
- * <app-list-products.component></app-list-products.component>
+ * <app-list-products></app-list-products>
  * ```
  */
 @Component({
-  selector: 'app-list-products.component',
-  template: `<app-table-products [products]="products" ></app-table-products>`,
+  selector: 'app-list-products',
+  template: `
+    <section class="container py-4" aria-labelledby="products-title">
+      <h1 id="products-title" class="h3">Catálogo tecnológico</h1>
+      <p class="text-muted">Consulta la disponibilidad y el precio de cada producto.</p>
+      <app-table-products [products]="products"></app-table-products>
+    </section>
+  `,
   standalone: false,
 })
-export class ListProductsComponent {
+export class ListProductsComponent implements OnInit {
   /**
    * Listado de productos obtenidos desde el servicio.
    * @type {Product[]}

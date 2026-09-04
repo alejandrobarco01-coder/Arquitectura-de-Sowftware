@@ -3,7 +3,13 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Country } from '../interfaces/country.interface';
 
+/**
+ * Respuesta simplificada del endpoint de países de FIRST.
+ *
+ * Cada clave de `data` corresponde al código ISO del país.
+ */
 interface FirstCountriesResponse {
+  /** Países indexados por su código ISO, con su nombre y región. */
   data: Record<string, { country: string; region: string }>;
 }
 
@@ -17,11 +23,21 @@ interface FirstCountriesResponse {
   providedIn: 'root',
 })
 export class CountriesService {
+  /** URL del endpoint público de FIRST que limita la consulta a cien países. */
   private readonly apiUrl = 'https://api.first.org/data/v1/countries?limit=100';
 
+  /**
+   * Crea el servicio con el cliente HTTP de Angular.
+   *
+   * @param http Cliente utilizado para efectuar la petición GET a FIRST.
+   */
   constructor(private readonly http: HttpClient) {}
 
-  /** Obtiene y adapta los países a la estructura usada por la tabla. */
+  /**
+   * Obtiene y adapta los países a la estructura usada por la tabla.
+   *
+   * @returns Flujo con los países transformados al modelo `Country`.
+   */
   getAllCountries(): Observable<Country[]> {
     return this.http.get<FirstCountriesResponse>(this.apiUrl).pipe(
       map((response) =>

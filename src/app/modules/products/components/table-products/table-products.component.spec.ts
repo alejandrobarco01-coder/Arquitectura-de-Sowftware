@@ -40,19 +40,26 @@ describe('TableProductsComponent', () => {
     rows.forEach((row, index) => {
       const columns = row.queryAll(By.css('th, td'));
       const product = component.products[index];
-      const productPrice = new CurrencyPipe('en-US').transform(product.price);
+      const productPrice = new CurrencyPipe('en-US').transform(
+        product.price,
+        'COP',
+        'symbol-narrow',
+        '1.0-0'
+      );
 
       expect(columns[0].nativeElement.textContent.trim()).toBe(String(product.id));
-      expect(columns[1].nativeElement.textContent.trim()).toBe(product.name);
-      expect(columns[2].nativeElement.textContent.trim()).toBe(productPrice);
+      expect(columns[1].nativeElement.textContent.trim()).toBe(product.sku);
+      expect(columns[2].nativeElement.textContent.trim()).toBe(product.name);
       expect(columns[3].nativeElement.textContent.trim()).toBe(product.category);
+      expect(columns[4].nativeElement.textContent.trim()).toBe(String(product.stock));
+      expect(columns[5].nativeElement.textContent.trim()).toBe(productPrice);
     });
   });
 
-  it('debería mapear cada ingeniería a su BadgeType correcto', () => {
-    expect(component.categoryMap['Carnes']).toBe('danger');
-    expect(component.categoryMap['Frutas']).toBe('warning');
-    expect(component.categoryMap['Lacteos']).toBe('primary');
-    expect(component.categoryMap['Verduras']).toBe('success');
+  it('debería mapear cada categoría a su BadgeType correcto', () => {
+    expect(component.categoryMap['Computadores']).toBe('primary');
+    expect(component.categoryMap['Periféricos']).toBe('success');
+    expect(component.categoryMap['Audio']).toBe('warning');
+    expect(component.categoryMap['Hogar inteligente']).toBe('danger');
   });
 });

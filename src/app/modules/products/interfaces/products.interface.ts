@@ -1,52 +1,60 @@
 /**
- * Interfaz que representa un producto.
+ * Interfaz que representa un producto tecnológico del catálogo.
  *
  * Contiene la información básica necesaria para mostrar un producto
  * en la tabla o en cualquier componente de listado.
  *
  * @remarks
- * Cada producto debe tener un `id` único, un `name` descriptivo,
- * una `category` válida y un `price` en pesos colombianos.
+ * Cada producto tiene un identificador, referencia comercial, categoría,
+ * existencias y precio en pesos colombianos.
  *
  * @example
  * ```ts
  * const producto: Product = {
  *   id: 1,
- *   name: 'Leche entera',
- *   category: 'Lacteos',
- *   price: 4500
+ *   sku: 'TEC-001',
+ *   name: 'Teclado mecánico',
+ *   category: 'Periféricos',
+ *   price: 249900,
+ *   stock: 18
  * };
  * ```
  */
 export interface Product {
-    /** Identificador único del producto */
-    id: number;
+  /** Identificador único del producto. */
+  id: number;
 
-    /** Nombre o descripción del producto */
-    name: string;
+  /** Referencia comercial única del inventario. */
+  sku: string;
 
-    /** Categoría del producto */
-    category: ProductCategory;
+  /** Nombre del producto. */
+  name: string;
 
-    /** Precio del producto en pesos */
-    price: number;
+  /** Categoría funcional del producto. */
+  category: ProductCategory;
+
+  /** Precio unitario en pesos colombianos. */
+  price: number;
+
+  /** Unidades disponibles en inventario. */
+  stock: number;
 }
 
 /**
  * Tipo de categoría de producto.
  *
  * @remarks
- * Este tipo restringe las categorías a los valores predefinidos:
- * - 'Lacteos'
- * - 'Carnes'
- * - 'Frutas'
- * - 'Verduras'
+ * Este tipo restringe las categorías a las líneas disponibles en el catálogo:
+ * - 'Computadores'
+ * - 'Periféricos'
+ * - 'Audio'
+ * - 'Hogar inteligente'
  *
  * Se utiliza principalmente para mapear badges de colores en la UI.
  *
  * @example
  * ```ts
- * const categoria: ProductCategory = 'Frutas';
+ * const categoria: ProductCategory = 'Periféricos';
  * ```
  */
-export type ProductCategory = 'Lacteos' | 'Carnes' | 'Frutas' | 'Verduras';
+export type ProductCategory = 'Computadores' | 'Periféricos' | 'Audio' | 'Hogar inteligente';

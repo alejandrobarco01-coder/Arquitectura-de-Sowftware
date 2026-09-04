@@ -1,7 +1,7 @@
 import { Product } from "../../modules/products/interfaces/products.interface";
 
 /**
- * Listado de productos disponibles en el sistema.
+ * Catálogo de productos tecnológicos disponibles en el sistema.
  *
  * Esta constante simula una fuente de datos (mock) que representa
  * información básica de productos, utilizada para:
@@ -14,62 +14,66 @@ import { Product } from "../../modules/products/interfaces/products.interface";
 export const PRODUCTS: Product[] = [
   {
     id: 1,
-    name: 'Leche entera',
-    category: 'Lacteos',
-    price: 4500
+    sku: 'COM-001',
+    name: 'Portátil Ultrabook 14 pulgadas',
+    category: 'Computadores',
+    price: 3299900,
+    stock: 7
   },
   {
     id: 2,
-    name: 'Queso campesino',
-    category: 'Lacteos',
-    price: 8200
+    sku: 'PER-001',
+    name: 'Teclado mecánico inalámbrico',
+    category: 'Periféricos',
+    price: 249900,
+    stock: 18
   },
   {
     id: 3,
-    name: 'Pechuga de pollo',
-    category: 'Carnes',
-    price: 14500
+    sku: 'PER-002',
+    name: 'Mouse ergonómico',
+    category: 'Periféricos',
+    price: 119900,
+    stock: 24
   },
   {
     id: 4,
-    name: 'Carne molida de res',
-    category: 'Carnes',
-    price: 12800
+    sku: 'AUD-001',
+    name: 'Audífonos con cancelación de ruido',
+    category: 'Audio',
+    price: 399900,
+    stock: 12
   },
   {
     id: 5,
-    name: 'Manzanas rojas',
-    category: 'Frutas',
-    price: 5200
+    sku: 'AUD-002',
+    name: 'Parlante portátil Bluetooth',
+    category: 'Audio',
+    price: 189900,
+    stock: 15
   },
   {
     id: 6,
-    name: 'Banano',
-    category: 'Frutas',
-    price: 2800
+    sku: 'HOG-001',
+    name: 'Bombillo inteligente Wi-Fi',
+    category: 'Hogar inteligente',
+    price: 69900,
+    stock: 31
   },
   {
     id: 7,
-    name: 'Tomate chonto',
-    category: 'Verduras',
-    price: 3500
+    sku: 'HOG-002',
+    name: 'Cámara de seguridad interior',
+    category: 'Hogar inteligente',
+    price: 159900,
+    stock: 9
   },
   {
     id: 8,
-    name: 'Cebolla cabezona',
-    category: 'Verduras',
-    price: 3000
-  },
-  {
-    id: 9,
-    name: 'Yogurt natural',
-    category: 'Lacteos',
-    price: 2500
-  },
-  {
-    id: 10,
-    name: 'Pernil de cerdo',
-    category: 'Carnes',
-    price: 16000
+    sku: 'COM-002',
+    name: 'Monitor IPS de 24 pulgadas',
+    category: 'Computadores',
+    price: 729900,
+    stock: 11
   }
 ];

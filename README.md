@@ -6,6 +6,13 @@
 
 ## 🌐 APIs Consultadas
 
+## 📦 Módulo de Productos
+
+- **Módulo**: `ProductsModule` (`src/app/modules/products`)
+- **Ruta**: `/products/catalog`
+- **Fuente de datos**: `src/app/core/config/products.config.ts`
+- **Descripción**: Catálogo tecnológico local tipado mediante la interfaz `Product`. El módulo obtiene los datos a través de `ProductsService` y los presenta en una tabla con referencia, categoría, disponibilidad y precio en COP.
+
 Para la **Sección 2 - Consumo de APIs**, se integró la siguiente API pública de libre acceso:
 
 - **API de Países (FIRST)**: `https://api.first.org/data/v1/countries?limit=100`
